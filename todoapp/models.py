@@ -7,8 +7,10 @@ class Task(models.Model):
         ('IN_PROGRESS', 'In Progress'),
         ('COMPLETED', 'Completed'),
     ]
-    title = models.CharField(max_length=25),
-    description = models.TextField,
-    status = models.CharField(max_length=20,choices=status_choice ),
+    title = models.CharField(max_length=25, default='Untitled')
+    description = models.TextField()
+    status = models.CharField(max_length=20,choices=status_choice, default='PENDING' )
 
+    def __str__(self):
+        return self.title
     

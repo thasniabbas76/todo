@@ -12,8 +12,26 @@
     <div class="body-headline">
     <h4>Hey! Buddy,</h4>
     </div><hr>
-    <div class="body-content">
-    <p>what are your plans for today?</p>
+    <clas class="body-content">
+    <p>What are your plans for today? </p>
+    <button>Add New Task</button>
+    {% if tasks %}
+    <ul class="tasks-list">
+        {% for task in tasks %}
+            <li class="task-item">
+                <strong> {{task.title}}</strong> - {{task.description}}
+                <span class="status">[{{ task.status}}]</span>
+
+                <div class="actions">
+                    <a href="">Edit</a>
+                    <a href="">Delete</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No tasks available </p>
+    {%endif%}
     </div>
 </body>
 </html>
