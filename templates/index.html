@@ -12,10 +12,24 @@
     <div class="body-headline">
     <h4>Hey! Buddy,</h4>
     </div><hr>
-    <clas class="body-content">
-    <p>What are your plans for today? </p>
-    <button>Add New Task</button>
+    <div class="body-content">
+    <p><strong>What are your plans for today? </strong></p>
+    <form method="POST" class="add-task-form">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Task Title" required><br>
+        <input type="text" name="description" placeholder="Describe your Task" required><br>
+        <select name="status">
+            <option value="PENDING">Pending</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="COMPLETED">Completed</option>
+        </select>
+    
+        <div class="add-task">
+            <button type="submit">Add New Task</button>
+        </div>
+    </form>
     {% if tasks %}
+    
     <ul class="tasks-list">
         {% for task in tasks %}
             <li class="task-item">
