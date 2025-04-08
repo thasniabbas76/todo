@@ -6,11 +6,11 @@ from .models import Task
 def index(request):
     if request.method == 'POST':
         title = request.POST.get('title')
-        description = request.POST.get('description')
-        status = request.POST.get('status','PENDING')
+        description = request.POST.get('desccription')
+        status = request.POST.get('status', 'PENDING')
 
         if title and description:
-            Task.objects.create(title=title,description=description)
+            Task.objects.create(title=title, description=description)
             return redirect('index')
-    tasks = Task.objects.all()
+        tasks = Task.objects.all()
     return render(request, "index.html", {'tasks':tasks})
