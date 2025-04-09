@@ -10,7 +10,7 @@ def index(request):
         status = request.POST.get('status', 'PENDING')
 
         if title and description:
-            Task.objects.create(title=title, description=description)
+            Task.objects.create(title=title, description=description, status=status)
             return redirect('index')
     tasks = Task.objects.all()
     return render(request, "index.html", {'tasks':tasks})
@@ -20,6 +20,11 @@ def edit(request,id):
     if request.method == 'POST':
         task.title = request.POST.get('title')
         task.description = request.POST.get('description')
-        task.status = request.POST.get('status','PENDING')
+        task.status = request.POST.get('status')
         task.save()
         return redirect('index')
+    return render(request, 'edit.html',{'task':task})
+def delete(request,id):
+    task = get_object_or_404(Task,id = id)
+    task.delete()
+    return redirect('index')
