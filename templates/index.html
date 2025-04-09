@@ -37,7 +37,7 @@
                 <span class="status">[{{ task.status}}]</span>
 
                 <div class="actions">
-                    <a href="">Edit</a>
+                    <a href="{% url 'edit' task.id %}">Edit</a>
                     <a href="">Delete</a>
                 </div>
             </li>
