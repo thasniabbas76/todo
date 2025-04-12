@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect,get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from .models import Task, User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='login')
 def index(request):
     if request.method == 'POST':
         title = request.POST.get('title')
@@ -41,7 +43,7 @@ def login_view(request):
         else:
             return HttpResponse("Invalid credentials.")
 
-    return render(request, 'index.html')
+    return render(request, 'login.html')
 def signup_view(request):
     if request.method == 'POST':
         name = request.POST.get('name')
