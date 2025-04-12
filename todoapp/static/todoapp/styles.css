@@ -44,9 +44,24 @@ body, html{
     margin-bottom: 10px;
 
 }
-.add-task btn{
+.add-task .btn{
     padding: 8px 16px;
     background-color: purple;
     color: white;
     display: block;
+}
+.logout-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: purple;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #5e0d5e;
 }

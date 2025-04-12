@@ -10,10 +10,14 @@
 </head>
 <body>
     <div class="body-headline">
-    <h4>Hey! Buddy,</h4>
+    {% if user.is_authenticated %}
+        <h4>Welcome, Buddy!</h4>
+        <!-- Logout Button -->
+        <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+    {% endif %}
     </div><hr>
     <div class="body-content">
-    <p><strong>What are your plans for today? </strong></p>
+    <p><strong>What are your plans for today?</strong></p>
     <form method="POST" class="add-task-form">
         {% csrf_token %}
         <input type="text" name="title" placeholder="Task Title" required><br>
@@ -47,6 +51,7 @@
     {% else %}
         <p>No tasks available </p>
     {%endif%}
+    
     </div>
 </body>
 </html>

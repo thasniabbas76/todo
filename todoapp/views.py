@@ -58,3 +58,6 @@ def signup_view(request):
                 return redirect('login')
     
     return render(request, 'signup.html')
+def logout_view(request):
+    logout(request)
+    return redirect('login')
